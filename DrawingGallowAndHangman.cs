@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
- 
+
 namespace DrawingGallowsAndHangman
 {
     class DrawingGallowsAndHangman
@@ -12,10 +12,17 @@ namespace DrawingGallowsAndHangman
         static void Main()
         {
             DrawFrame();
-            DrawingGallow(2);
-            DrawMen(3);
+            for (int i = 1; i < 10; i++)
+            {
+
+                DrawingGallow(i);
+                DrawMen(i);
+                //HangingMen(i);
+            }
+
+            //HangingMen(9);
         }
- 
+
         public static void DrawFrame()
         {
             int frameWidth = 36;
@@ -35,21 +42,22 @@ namespace DrawingGallowsAndHangman
             int baseGallowWidth = 11;
             int gallowTopBaseWidth = 15;
             int ropeHeight = 8;
+
             Console.SetBufferSize(90, 31);
             Console.SetCursorPosition(53, 25);
             //draw base gallow
-            //if (countFalsePrediction == 1)
-            //{
+            if (countFalsePrediction == 1)
+            {
                 Console.Write(new string('_', baseGallowWidth));
                 for (int i = 25; i > 4; i--)
                 {
                     Console.SetCursorPosition(58, i);
                     Console.Write("|");
                 }
-            //}
- 
-            //if (countFalsePrediction == 2)
-            //{
+            }
+
+            if (countFalsePrediction == 2)
+            {
                 //draw Top Base and rope
                 Console.SetCursorPosition(58, 4);
                 Console.WriteLine(new string('-', gallowTopBaseWidth));
@@ -59,20 +67,20 @@ namespace DrawingGallowsAndHangman
                     Console.SetCursorPosition(72, row);
                     Console.WriteLine('|');
                 }
-            //}
-           
+            }
+
         }
- 
+
         public static void DrawMen(int countFalsePrediction)
         {
- 
+
             int legsHeight = 4;
             int startingColLeg = 71;
             int armHeight = 4;
             int startingColArm = 71;
             // draw head
-            //if (countFalsePrediction == 3)
-            //{
+            if (countFalsePrediction == 3)
+            {
                 Console.SetCursorPosition(70, 9);
                 Console.WriteLine("-----");
                 Console.SetCursorPosition(69, 10);
@@ -81,9 +89,9 @@ namespace DrawingGallowsAndHangman
                 Console.WriteLine("|  -  |");
                 Console.SetCursorPosition(70, 12);
                 Console.WriteLine("-----");
-            //}
-            //else if (countFalsePrediction == 4)
-            //{
+            }
+            else if (countFalsePrediction == 4)
+            {
                 //draw body
                 int bodyHeight = 7;
                 for (int i = 13; i < bodyHeight + 13; i++)
@@ -91,23 +99,23 @@ namespace DrawingGallowsAndHangman
                     Console.SetCursorPosition(72, i);
                     Console.WriteLine("|");
                 }
-            //}
-            //else if (countFalsePrediction == 5)
-            //{
+            }
+            else if (countFalsePrediction == 5)
+            {
                 // draw left leg
- 
-               
+
+
                 for (int i = 20; i < legsHeight + 20; i++)
                 {
                     Console.SetCursorPosition(startingColLeg, i);
                     Console.WriteLine("/");
                     startingColLeg--;
                 }
-            //}
-            //else if (countFalsePrediction == 6)
-            //{
+            }
+            else if (countFalsePrediction == 6)
+            {
                 // draw right leg
- 
+
                 startingColLeg = 73;
                 for (int i = 20; i < legsHeight + 20; i++)
                 {
@@ -115,20 +123,20 @@ namespace DrawingGallowsAndHangman
                     Console.WriteLine(@"\");
                     startingColLeg++;
                 }
-            //}
-            //else if (countFalsePrediction == 7)
-            //{
+            }
+            else if (countFalsePrediction == 7)
+            {
                 // draw left arm
-               
+
                 for (int i = 16; i > 16 - armHeight; i--)
                 {
                     Console.SetCursorPosition(startingColArm, i);
                     Console.WriteLine(@"\");
                     startingColArm--;
                 }
-            //}
-            //else if (countFalsePrediction == 8)
-            //{
+            }
+            else if (countFalsePrediction == 8)
+            {
                 // draw right arm
                 startingColArm = 73;
                 for (int i = 16; i > 16 - armHeight; i--)
@@ -137,7 +145,34 @@ namespace DrawingGallowsAndHangman
                     Console.WriteLine("/");
                     startingColArm++;
                 }
-            //}
+
+                // draw message
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.SetCursorPosition(77, 7);
+                Console.WriteLine("Please,");
+                Console.SetCursorPosition(77, 8);
+                Console.WriteLine("don`t make");
+                Console.SetCursorPosition(77, 9);
+                Console.WriteLine("mistake");
+                Console.SetCursorPosition(77, 10);
+                Console.WriteLine("again!!!");
+
+            }
+
         }
+        //public static void HangingMen(int countFalsePrediction)
+        //{
+        //    if (countFalsePrediction == 9)
+        //    {
+
+        //        startingColArm = 73;
+        //        for (int i = 16; i > 16 - armHeight; i--)
+        //        {
+        //            Console.SetCursorPosition(startingColArm, i);
+        //            Console.WriteLine("/");
+        //            startingColArm++;
+        //        }
+        //    }
+        //}
     }
 }
