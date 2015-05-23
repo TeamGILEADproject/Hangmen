@@ -1,0 +1,65 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Dynamic;
+using System.IO;
+using System.Security;
+using System.Threading;
+using System.Xml;
+
+namespace AddWords
+{
+    class AddWords
+    {
+        static void Main()
+        {
+            Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture; //!!!
+            Console.InputEncoding = Encoding.Unicode; //!!!
+            Console.OutputEncoding = Encoding.Unicode; //!!!
+            int AddToCategory = int.Parse(Console.ReadLine()); //category input
+            string text = Console.ReadLine();
+
+            switch (AddToCategory)
+            {
+                case 1: using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"Words\Countries.txt", true))
+                    {
+                        file.WriteLine(text);
+                    }; break;
+                case 2: using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"Words\City.txt", true))
+                    {
+                        file.WriteLine(text);
+                    }; break;
+                case 3: using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"Words\River.txt", true))
+                    {
+                        file.WriteLine(text);
+                    }; break;
+                case 4: using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"Words\Mountains.txt", true))
+                    {
+                        file.WriteLine(text);
+                    }; break;
+                case 5: using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"Words\Animal.txt", true))
+                    {
+                        file.WriteLine(text);
+                    }; break;
+                case 6: using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"Words\Plants.txt", true))
+                    {
+                        file.WriteLine(text);
+                    }; break;
+                case 7: using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"Words\Cars.txt", true))
+                    {
+                        file.WriteLine(text);
+                    }; break;
+                case 8: using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"Words\Lectors.txt", true))
+                    {
+                        file.WriteLine(text);
+                    }; break;
+                default: Console.WriteLine("Wrong Input!"); break;
+
+            }
+        }
+
+
+    }
+}
