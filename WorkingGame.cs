@@ -378,6 +378,7 @@ namespace WorkingGame
                     PlayMusic();
                     break;
                 }
+                Console.SetCursorPosition(0,7);
                 Console.WriteLine("Въведете буква:");
                 letter = Char.Parse(Console.ReadLine());
                 enterdLetters.Add(letter.ToString());
