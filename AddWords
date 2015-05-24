@@ -13,7 +13,7 @@ namespace AddWords
 {
     class AddWords
     {
-        static void Main()
+        static void AddWords()
         {
             Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture; //!!!
             Console.InputEncoding = Encoding.Unicode; //!!!
