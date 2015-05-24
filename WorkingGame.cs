@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -162,11 +163,24 @@ namespace WorkingGame
             Console.Write("Моля въдедете число от 1 до 8: ");
             int AddToCategory = int.Parse(Console.ReadLine()); //category input
             Console.Clear();
+            Console.Write("Моля, въведете думата: ");
             string text = Console.ReadLine();
+            string pattern = @"\d+";
+            //validating words
+            Regex matches = new Regex(pattern);
+            bool wordConsistDigit = matches.IsMatch(text, 0);
+            if (wordConsistDigit)
+            {
+                Console.WriteLine("Думата не може да съдържа цифри :)");
+                Console.Write("Моля, въведи нова дума: ");
+                text = Console.ReadLine();
+                
+            }
 
             switch (AddToCategory)
             {
                 case 1: string contents = File.ReadAllText(@"Words\Countries.txt");
+                    
                     if (contents.Contains(text))
                     {
                         Console.WriteLine("Тази държава вече съществува!");
@@ -176,9 +190,10 @@ namespace WorkingGame
                         using (StreamWriter file = new StreamWriter(@"Words\Countries.txt", true))
                         {
                             file.WriteLine(text);
+                            Console.WriteLine("Думата беше въведена. Благодарим ти!");
                             file.Close();
                         }
-                    }; break;
+                    } break;
 
                 case 2: contents = File.ReadAllText(@"Words\City.txt");
                     if (contents.Contains(text))
@@ -190,9 +205,10 @@ namespace WorkingGame
                         using (StreamWriter file = new StreamWriter(@"Words\City.txt", true))
                         {
                             file.WriteLine(text);
+                            Console.WriteLine("Думата беше въведена. Благодарим ти!");
                             file.Close();
                         }
-                    }; break;
+                    } break;
 
                 case 3: contents = File.ReadAllText(@"Words\Rivers.txt");
                     if (contents.Contains(text))
@@ -204,9 +220,10 @@ namespace WorkingGame
                         using (StreamWriter file = new StreamWriter(@"Words\Rivers.txt", true))
                         {
                             file.WriteLine(text);
+                            Console.WriteLine("Думата беше въведена. Благодарим ти!");
                             file.Close();
                         }
-                    }; break;
+                    } break;
 
                 case 4: contents = File.ReadAllText(@"Words\Mountains.txt");
                     if (contents.Contains(text))
@@ -219,9 +236,10 @@ namespace WorkingGame
                         using (StreamWriter file = new StreamWriter(@"Words\Mountains.txt", true))
                         {
                             file.WriteLine(text);
+                            Console.WriteLine("Думата беше въведена. Благодарим ти!");
                             file.Close();
                         }
-                    }; break;
+                    } break;
 
 
                 case 5: contents = File.ReadAllText(@"Words\Animals.txt");
@@ -235,9 +253,10 @@ namespace WorkingGame
                         using (StreamWriter file = new StreamWriter(@"Words\Animals.txt", true))
                         {
                             file.WriteLine(text);
+                            Console.WriteLine("Думата беше въведена. Благодарим ти!");
                             file.Close();
                         }
-                    }; break;
+                    } break;
 
 
                 case 6: contents = File.ReadAllText(@"Words\Plants.txt");
@@ -251,42 +270,45 @@ namespace WorkingGame
                         using (StreamWriter file = new StreamWriter(@"Words\Plants.txt", true))
                         {
                             file.WriteLine(text);
+                            Console.WriteLine("Думата беше въведена. Благодарим ти!");
                             file.Close();
                         }
-                    }; break;
+                    } break;
 
                 case 7: contents = File.ReadAllText(@"Words\Cars.txt");
                     if (contents.Contains(text))
                     {
-                        Console.WriteLine("Duplicate found!");
+                        Console.WriteLine("Тази кола вече съществува!");
                     }
                     else
                     {
                         using (StreamWriter file = new StreamWriter(@"Words\Cars.txt", true))
                         {
                             file.WriteLine(text);
+                            Console.WriteLine("Думата беше въведена. Благодарим ти!");
                             file.Close();
                         }
-                    }; break;
+                    } break;
 
                 case 8: contents = File.ReadAllText(@"Words\Lectors.txt");
                     if (contents.Contains(text))
                     {
-                        Console.WriteLine("Duplicate found!");
+                        Console.WriteLine("Този лектор вече съществува");
                     }
                     else
                     {
                         using (StreamWriter file = new StreamWriter(@" Words\Lectors.txt", true))
                         {
                             file.WriteLine(text);
+                            Console.WriteLine("Думата беше въведена. Благодарим ти!");
                             file.Close();
                         }
-                    }; break;
+                    } break;
                 default: Console.WriteLine("Wrong Input!"); break;
             }
-            Console.WriteLine("Искате ли да въведете друга дума? Y/N");
+            Console.WriteLine("Искате ли да въведете друга дума? Да/Не");
             string yN = Console.ReadLine().ToLower();
-            if (yN == "y")
+            if (yN == "да")
             {
                 output = true;
             }
