@@ -27,6 +27,9 @@ namespace PrintMenu
             Console.WriteLine("6. Растения");
             Console.WriteLine("7. Автомобили (марки/модели)");
             Console.WriteLine("8. Лектори в СофтУни");
+            Console.WriteLine("9. Острови");
+            Console.WriteLine("10. Планети");
+            Console.WriteLine("11. Цветя");
 
             Console.ResetColor();
 
