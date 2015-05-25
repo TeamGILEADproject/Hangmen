@@ -40,13 +40,13 @@ namespace WorkingGame
                 do
                 {
                     category = int.Parse(Console.ReadLine());
-                    if (category > 8 || category < 1)
+                    if (category > 11 || category < 1)
                     {
-                        Console.WriteLine("Enter number from 1 to 8!!!");
+                        Console.WriteLine("Enter number from 1 to 11!!!");
                     }
 
                 } while (category != 1 && category != 2 && category != 3 && category != 4 &&
-                                category != 5 && category != 6 && category != 7 && category != 8);
+                                category != 5 && category != 6 && category != 7 && category != 8 && category != 9 && category != 10 && category != 11);
 
 
 
