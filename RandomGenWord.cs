@@ -41,7 +41,15 @@ namespace RandomGenWord
             wordsForTheGame[6] = System.IO.File.ReadAllLines
                 (Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Words\Cars.txt"));
             wordsForTheGame[7] = System.IO.File.ReadAllLines
-                (Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Words\Lectors.txt")); 
+                (Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Words\Lectors.txt"));
+            wordsForTheGame[8] = System.IO.File.ReadAllLines
+                (Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Words\islands.txt"));
+            wordsForTheGame[9] = System.IO.File.ReadAllLines
+               (Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Words\planets.txt"));
+            wordsForTheGame[10] = System.IO.File.ReadAllLines
+               (Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Words\flowers.txt"));
+            
+
             int numberOfWord = GiveMeRandomNum(0, wordsForTheGame[category].Length - 1); // this is the range of the arrey (0, wordsForTheGame[category].Length - 1)
             return wordsForTheGame[category][numberOfWord].Trim().ToLower();
 
