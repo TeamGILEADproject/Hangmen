@@ -25,7 +25,7 @@ namespace RandomGenWord
 
         public static string RandomWordGen(int category)
         {
-            string [][] wordsForTheGame = new string[8][]; //8 strings for 8 categories
+            string [][] wordsForTheGame = new string[11][]; //11 strings for 11 categories
             wordsForTheGame[0] = System.IO.File.ReadAllLines
                 (Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Words\Countries.txt"));
             wordsForTheGame[1] = System.IO.File.ReadAllLines
