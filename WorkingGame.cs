@@ -77,16 +77,53 @@ namespace WorkingGame
             Console.WriteLine("За игра въведете 1");
             Console.WriteLine("За да въведете нова дума въведете 0");
             int startInput;
+            string strLetter;
+
+
+            string[] container = { "a", "b", "c", "d", "e", "f", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
+
+            strLetter = Console.ReadLine().ToLower();
+
+            for (int i = 0; i < container.Length; i++)
+            {
+                if (strLetter == container[i])
+                {
+
+                    while (strLetter == container[i])
+                    {
+                        Console.WriteLine("Не сте избрали опция от главното меню: 0 или 1 моля опитайте да стартирате програмата отново");
+                        strLetter = Console.ReadLine().ToLower();
+                    }
+
+
+                    break;
+                }
+
+
+            }
+
+
+
+
+
+
             do
             {
-                startInput = int.Parse(Console.ReadLine());
+
+                startInput = int.Parse(strLetter);
+
                 if (startInput != 0 && startInput != 1)
                 {
                     Console.WriteLine("Моля изберете опция от главното меню: 0 или 1");
                 }
 
+
+
             } while (startInput != 0 && startInput != 1);
+
+
             return startInput;
+
         }
 
 
@@ -114,7 +151,7 @@ namespace WorkingGame
             Console.WriteLine("9. Острови");
             Console.WriteLine("10. Планети");
             Console.WriteLine("11. Цветя");
-            
+
 
             Console.ResetColor();
         }
@@ -144,7 +181,7 @@ namespace WorkingGame
                  (Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Words\planets.txt"));
             wordsForTheGame[10] = File.ReadAllLines
                  (Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Words\flowers.txt"));
-            
+
             int numberOfWord = GiveMeRandomNum(0, wordsForTheGame[category].Length - 1); // this is the range of the arrey (0, wordsForTheGame[category].Length - 1)
             return wordsForTheGame[category][numberOfWord].Trim().ToLower();
 
@@ -188,13 +225,13 @@ namespace WorkingGame
                 Console.WriteLine("Думата не може да съдържа цифри :)");
                 Console.Write("Моля, въведи нова дума: ");
                 text = Console.ReadLine();
-                
+
             }
 
             switch (AddToCategory)
             {
                 case 1: string contents = File.ReadAllText(@"Words\Countries.txt");
-                    
+
                     if (contents.Contains(text))
                     {
                         Console.WriteLine("Тази държава вече съществува!");
@@ -437,7 +474,7 @@ namespace WorkingGame
                     PlayMusic();
                     break;
                 }
-                Console.SetCursorPosition(0,7);
+                Console.SetCursorPosition(0, 7);
                 Console.WriteLine("Въведете буква:");
                 letter = Char.Parse(Console.ReadLine());
                 enterdLetters.Add(letter.ToString());
@@ -584,7 +621,7 @@ namespace WorkingGame
         public static void HangMan()
         {
             DrawingHead();
-            Console.SetCursorPosition(70,13);
+            Console.SetCursorPosition(70, 13);
             Console.WriteLine("         ");
             Console.SetCursorPosition(70, 14);
             Console.WriteLine("         ");
@@ -601,80 +638,80 @@ namespace WorkingGame
             switch (countFalsePrediction)
             {
                 case 1:
-                {
-                    DrawingGallowBase();
-                    break;
-                }
+                    {
+                        DrawingGallowBase();
+                        break;
+                    }
                 case 2:
-                {
-                    DrawingGallowBase();
-                    DrawingTopBaseAndRope();
-                    break;
-                }
+                    {
+                        DrawingGallowBase();
+                        DrawingTopBaseAndRope();
+                        break;
+                    }
                 case 3:
-                {
-                    DrawingGallowBase();
-                    DrawingTopBaseAndRope();
-                    DrawingHead();
-                    break;
-                }
+                    {
+                        DrawingGallowBase();
+                        DrawingTopBaseAndRope();
+                        DrawingHead();
+                        break;
+                    }
                 case 4:
-                {
-                    DrawingGallowBase();
-                    DrawingTopBaseAndRope();
-                    DrawingHead();
-                    DrawingBody(13);
-                    break;
-                }
+                    {
+                        DrawingGallowBase();
+                        DrawingTopBaseAndRope();
+                        DrawingHead();
+                        DrawingBody(13);
+                        break;
+                    }
                 case 5:
-                {
-                    DrawingGallowBase();
-                    DrawingTopBaseAndRope();
-                    DrawingHead();
-                    DrawingBody(13);
-                    DrawingLeftLeg(20);
-                    break;
-                }
+                    {
+                        DrawingGallowBase();
+                        DrawingTopBaseAndRope();
+                        DrawingHead();
+                        DrawingBody(13);
+                        DrawingLeftLeg(20);
+                        break;
+                    }
                 case 6:
-                {
-                    DrawingGallowBase();
-                    DrawingTopBaseAndRope();
-                    DrawingHead();
-                    DrawingBody(13);
-                    DrawingLeftLeg(20);
-                    DrawingRightLeg(20);
-                    break;
-                }
+                    {
+                        DrawingGallowBase();
+                        DrawingTopBaseAndRope();
+                        DrawingHead();
+                        DrawingBody(13);
+                        DrawingLeftLeg(20);
+                        DrawingRightLeg(20);
+                        break;
+                    }
                 case 7:
-                {
-                    DrawingGallowBase();
-                    DrawingTopBaseAndRope();
-                    DrawingHead();
-                    DrawingBody(13);
-                    DrawingLeftLeg(20);
-                    DrawingRightLeg(20);
-                    DrawingLeftArm(16);
-                    break;
-                }
+                    {
+                        DrawingGallowBase();
+                        DrawingTopBaseAndRope();
+                        DrawingHead();
+                        DrawingBody(13);
+                        DrawingLeftLeg(20);
+                        DrawingRightLeg(20);
+                        DrawingLeftArm(16);
+                        break;
+                    }
                 case 8:
-                {
-                    DrawingGallowBase();
-                    DrawingTopBaseAndRope();
-                    DrawingHead();
-                    DrawingBody(13);
-                    DrawingLeftLeg(20);
-                    DrawingRightLeg(20);
-                    DrawingLeftArm(16);
-                    DrawingRightArmAndMessage(16);
-                    break;
-                }
+                    {
+                        DrawingGallowBase();
+                        DrawingTopBaseAndRope();
+                        DrawingHead();
+                        DrawingBody(13);
+                        DrawingLeftLeg(20);
+                        DrawingRightLeg(20);
+                        DrawingLeftArm(16);
+                        DrawingRightArmAndMessage(16);
+                        break;
+                    }
                 case 9:
-                {
-                    DrawingGallowBase();
-                    DrawingTopBaseAndRope(); 
-                    HangMan();
-                    break;
-                }
+                    {
+                        DrawingGallowBase();
+                        DrawingTopBaseAndRope();
+                        HangMan();
+                        break;
+                    }
             }
         }
     }
