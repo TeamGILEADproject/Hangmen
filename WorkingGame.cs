@@ -89,7 +89,10 @@ namespace WorkingGame
                 if (strLetter == container[i])
                 {
 
-                    while (strLetter == container[i])
+
+
+                    char[] arrContainer = container[i].ToCharArray();
+                    while (strLetter[i] >= arrContainer[i])
                     {
                         Console.WriteLine("Не сте избрали опция от главното меню: 0 или 1 моля опитайте да стартирате програмата отново");
                         strLetter = Console.ReadLine().ToLower();
@@ -103,10 +106,6 @@ namespace WorkingGame
             }
 
 
-
-
-
-
             do
             {
 
@@ -115,6 +114,9 @@ namespace WorkingGame
                 if (startInput != 0 && startInput != 1)
                 {
                     Console.WriteLine("Моля изберете опция от главното меню: 0 или 1");
+                    startInput = int.Parse(strLetter);
+
+
                 }
 
 
@@ -716,5 +718,6 @@ namespace WorkingGame
         }
     }
 }
+
 
 
