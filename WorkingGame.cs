@@ -111,6 +111,10 @@ namespace WorkingGame
             Console.WriteLine("6. Растения");
             Console.WriteLine("7. Автомобили (марки/модели)");
             Console.WriteLine("8. Лектори в СофтУни");
+            Console.WriteLine("9. Острови");
+            Console.WriteLine("10. Планети");
+            Console.WriteLine("11. Цветя");
+            
 
             Console.ResetColor();
         }
@@ -134,6 +138,13 @@ namespace WorkingGame
                 (Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Words\Cars.txt"));
             wordsForTheGame[7] = File.ReadAllLines
                 (Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Words\Lectors.txt"));
+            wordsForTheGame[8] = File.ReadAllLines
+             (Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Words\islands.txt"));
+            wordsForTheGame[9] = File.ReadAllLines
+                 (Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Words\planets.txt"));
+            wordsForTheGame[10] = File.ReadAllLines
+                 (Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Words\flowers.txt"));
+            
             int numberOfWord = GiveMeRandomNum(0, wordsForTheGame[category].Length - 1); // this is the range of the arrey (0, wordsForTheGame[category].Length - 1)
             return wordsForTheGame[category][numberOfWord].Trim().ToLower();
 
@@ -159,8 +170,11 @@ namespace WorkingGame
             Console.WriteLine("6. Растения");
             Console.WriteLine("7. Автомобили (марки/модели)");
             Console.WriteLine("8. Лектори в СофтУни");
+            Console.WriteLine("9. Острови");
+            Console.WriteLine("10. Планети в слънчевата система");
+            Console.WriteLine("11. Цветя");
             Console.WriteLine();
-            Console.Write("Моля въдедете число от 1 до 8: ");
+            Console.Write("Моля въдедете число от 1 до 11: ");
             int AddToCategory = int.Parse(Console.ReadLine()); //category input
             Console.Clear();
             Console.Write("Моля, въведете думата: ");
@@ -304,6 +318,51 @@ namespace WorkingGame
                             file.Close();
                         }
                     } break;
+
+                case 9: contents = File.ReadAllText(@"Words\islands.txt");
+                    if (contents.Contains(text))
+                    {
+                        Console.WriteLine("Този остров вече съществува!");
+                    }
+                    else
+                    {
+                        using (StreamWriter file = new StreamWriter(@"Words\islands.txt", true))
+                        {
+                            file.WriteLine(text);
+                            Console.WriteLine("Думата беше въведена. Благодарим ти!");
+                            file.Close();
+                        }
+                    } break;
+                case 10: contents = File.ReadAllText(@"Words\planets.txt");
+                    if (contents.Contains(text))
+                    {
+                        Console.WriteLine("Тази планета вече съществува!");
+                    }
+                    else
+                    {
+                        using (StreamWriter file = new StreamWriter(@"Words\planets.txt", true))
+                        {
+                            file.WriteLine(text);
+                            Console.WriteLine("Думата беше въведена. Благодарим ти!");
+                            file.Close();
+                        }
+                    } break;
+
+                case 12: contents = File.ReadAllText(@"Words\flowers.txt");
+                    if (contents.Contains(text))
+                    {
+                        Console.WriteLine("Това цвете вече съществува!");
+                    }
+                    else
+                    {
+                        using (StreamWriter file = new StreamWriter(@"Words\flowers.txt", true))
+                        {
+                            file.WriteLine(text);
+                            Console.WriteLine("Думата беше въведена. Благодарим ти!");
+                            file.Close();
+                        }
+                    } break;
+
                 default: Console.WriteLine("Wrong Input!"); break;
             }
             Console.WriteLine("Искате ли да въведете друга дума? Да/Не");
