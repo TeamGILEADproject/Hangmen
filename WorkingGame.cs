@@ -114,7 +114,7 @@ namespace WorkingGame
                 if (startInput != 0 && startInput != 1)
                 {
                     Console.WriteLine("Моля изберете опция от главното меню: 0 или 1");
-                    startInput = int.Parse(strLetter);
+                 
 
 
                 }
