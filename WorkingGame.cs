@@ -86,7 +86,12 @@ namespace WorkingGame
 
             for (int i = 0; i < container.Length; i++)
             {
-                if (strLetter == container[i])
+                if (strLetter == container[i] || strLetter == container[i + 1] || strLetter == container[i + 2] || strLetter == container[i + 3] || strLetter == container[i + 4]
+                    || strLetter == container[i + 5] || strLetter == container[i + 6] || strLetter == container[i + 7] || strLetter == container[i + 8]
+                    || strLetter == container[i + 9] || strLetter == container[i + 10] || strLetter == container[i + 11] || strLetter == container[i + 12]
+                    || strLetter == container[i + 13] || strLetter == container[i + 14] || strLetter == container[i + 15] || strLetter == container[i + 16]
+                    || strLetter == container[i + 17] || strLetter == container[i + 18] || strLetter == container[i + 19] || strLetter == container[i + 20]
+                    || strLetter == container[i + 21] || strLetter == container[i + 22] || strLetter == container[i + 23] || strLetter == container[i + 24])
                 {
 
 
@@ -114,7 +119,7 @@ namespace WorkingGame
                 if (startInput != 0 && startInput != 1)
                 {
                     Console.WriteLine("Моля изберете опция от главното меню: 0 или 1");
-                 
+
 
 
                 }
