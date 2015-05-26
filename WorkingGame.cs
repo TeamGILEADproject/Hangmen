@@ -79,7 +79,6 @@ namespace WorkingGame
             int startInput;
             string strLetter;
 
-
             string[] container = { "a", "b", "c", "d", "e", "f", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
 
             strLetter = Console.ReadLine().ToLower();
@@ -89,16 +88,9 @@ namespace WorkingGame
             {
                 do
                 {
+                    Console.WriteLine("Моля  изберете  опция от главното меню: 0 или 1 ако сте го направили потвърдете като повторите избора си");
+                    startInput = int.Parse(Console.ReadLine());
 
-                    startInput = int.Parse(strLetter);
-
-                    if (startInput != 0 && startInput != 1)
-                    {
-                        Console.WriteLine("Моля изберете опция от главното меню: 0 или 1");
-
-
-
-                    }
 
 
 
@@ -126,7 +118,7 @@ namespace WorkingGame
                         char[] arrContainer = container[i].ToCharArray();
                         while (strLetter[i] >= arrContainer[i])
                         {
-                            Console.WriteLine("Не сте избрали опция от главното меню: 0 или 1 моля опитайте да стартирате програмата отново");
+                            Console.WriteLine("Не сте избрали опция от главното меню: 0 или 1 моля опитайте отново");
                             strLetter = Console.ReadLine().ToLower();
                         }
 
@@ -140,24 +132,14 @@ namespace WorkingGame
 
             }
 
+
             do
             {
-
-                startInput = int.Parse(strLetter);
-
-                if (startInput != 0 && startInput != 1)
-                {
-                    Console.WriteLine("Моля изберете опция от главното меню: 0 или 1");
-
-
-
-                }
-
+                Console.WriteLine("Моля  изберете  опция от главното меню: 0 или 1 ако сте го направили потвърдете като повторите избора си ");
+                startInput = int.Parse(Console.ReadLine());
 
 
             } while (startInput != 0 && startInput != 1);
-
-
             return startInput;
 
         }
