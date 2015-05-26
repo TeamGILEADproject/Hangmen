@@ -634,6 +634,7 @@ namespace WorkingGame
             Console.WriteLine("mistake");
             Console.SetCursorPosition(77, 10);
             Console.WriteLine("again!!!");
+			Console.ResetColor();
         }
 
         public static void HangMan()
