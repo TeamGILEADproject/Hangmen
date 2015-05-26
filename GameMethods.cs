@@ -16,8 +16,9 @@ namespace WorkingGame
             Console.ResetColor();
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "БЕСЕНИЦА"));
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "created by Team GILEAD"));
-            Console.WriteLine("1. ИГРАЙ!");
             Console.WriteLine("0. Въведете нова дума");
+            Console.WriteLine("1. ИГРАЙ!");
+            
             int startInput = 1;
             string strLetter;
 
@@ -31,64 +32,7 @@ namespace WorkingGame
                 }
 
             } while (!IsValidNum01(strLetter));
-
-            //string[] container = { "a", "b", "c", "d", "e", "f", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
-
-
-            //if (strLetter == "0" || strLetter == "1" || strLetter == "2" || strLetter == "3" || strLetter == "4" || strLetter == "5" || strLetter == "6" || strLetter == "7"
-            //    || strLetter == "8" || strLetter == "9" || strLetter == "10")
-            //{
-            //    do
-            //    {
-            //        startInput = int.Parse(strLetter);
-            //        if (startInput != 0 || startInput != 1)
-            //        {
-            //            Console.WriteLine("Не сте избрали опция от главното меню: 0 или 1 моля опитайте отново");
-            //            strLetter = Console.ReadLine().ToLower();
-            //            startInput = Int32.Parse(Console.ReadLine());
-            //        }
-
-            //    } while (startInput != 0 && startInput != 1);
-
-
-            //    return startInput;
-            //}
-            //else
-            //{
-
-
-            //    for (int i = 0; i < container.Length; i++)
-            //    {
-            //        if (strLetter == container[i] || strLetter == container[i + 1] || strLetter == container[i + 2] || strLetter == container[i + 3] || strLetter == container[i + 4]
-            //            || strLetter == container[i + 5] || strLetter == container[i + 6] || strLetter == container[i + 7] || strLetter == container[i + 8]
-            //            || strLetter == container[i + 9] || strLetter == container[i + 10] || strLetter == container[i + 11] || strLetter == container[i + 12]
-            //            || strLetter == container[i + 13] || strLetter == container[i + 14] || strLetter == container[i + 15] || strLetter == container[i + 16]
-            //            || strLetter == container[i + 17] || strLetter == container[i + 18] || strLetter == container[i + 19] || strLetter == container[i + 20]
-            //            || strLetter == container[i + 21] || strLetter == container[i + 22] || strLetter == container[i + 23] || strLetter == container[i + 24])
-            //        {
-
-
-
-            //            char[] arrContainer = container[i].ToCharArray();
-            //            while (strLetter[i] >= arrContainer[i])
-            //            {
-            //                Console.WriteLine("Не сте избрали опция от главното меню: 0 или 1 моля опитайте отново");
-            //                strLetter = Console.ReadLine().ToLower();
-            //            }
-
-
-            //            break;
-            //        }
-            //    }
-            //}
-
-            //do
-            //{
-            //    Console.WriteLine("Моля  изберете  опция от главното меню: 0 или 1 ако сте го направили потвърдете като повторите избора си ");
-            //    startInput = Int32.Parse(Console.ReadLine());
-
-
-            //} while (startInput != 0 && startInput != 1);
+            
             return startInput;
 
         }
@@ -123,6 +67,22 @@ namespace WorkingGame
         public static bool AddWord()
         {
             bool output = false;
+            string[] categories = new[]
+            {
+                "",
+                "Държави",
+                "Градове в България",
+                "Реки в България",
+                "Планини",
+                "Животни",
+                "Растения",
+                "Автомобили (марки/модели)",
+                "Лектори в СофтУни",
+                "Острови",
+                "Планети",
+                "Цветя"
+
+            };
             Console.WriteLine("Изберете категория в която да добавите дума : ");
             Console.WriteLine("1. Държави");
             Console.WriteLine("2. Градове в България");
@@ -137,8 +97,14 @@ namespace WorkingGame
             Console.WriteLine("11. Цветя");
             Console.WriteLine();
             Console.Write("Моля въдедете число от 1 до 11: ");
-            int AddToCategory = int.Parse(Console.ReadLine()); //category input
+            int AddToCategory = int.Parse(Console.ReadLine());//category input
+            while (AddToCategory < 1 || AddToCategory > 11)
+            {
+                Console.WriteLine("Моля въдедете число от 1 до 11: ");
+                AddToCategory = int.Parse(Console.ReadLine());
+            }
             Console.Clear();
+            Console.WriteLine("Избранато от вас категория е: {0}",categories[AddToCategory]);
             Console.Write("Моля, въведете думата: ");
             string text = Console.ReadLine();
             string pattern = @"\d+";
@@ -310,7 +276,7 @@ namespace WorkingGame
                         }
                     } break;
 
-                case 12: contents = File.ReadAllText(@"Words\flowers.txt");
+                case 11: contents = File.ReadAllText(@"Words\flowers.txt");
                     if (contents.Contains(text))
                     {
                         Console.WriteLine("Това цвете вече съществува!");
@@ -488,6 +454,20 @@ namespace WorkingGame
             }
 
 
+            return true;
+        }
+        public static bool IsValidNum1_11(string numberStr)
+        {
+            if (numberStr == String.Empty)
+            {
+                return false;
+            }
+            if (numberStr != "1" && numberStr != "2" && numberStr != "3" && numberStr != "4" && numberStr != "5" &&
+                    numberStr != "6" && numberStr != "7" && numberStr != "8" && numberStr != "9" && numberStr != "10" &&
+                    numberStr != "11")
+            {
+                return false;
+            }
             return true;
         }
 

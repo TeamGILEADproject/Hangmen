@@ -69,9 +69,6 @@ namespace WorkingGame
             } while (doYouWantToPlayAgain == "д");
 
         }
-        
+
     }
 }
-
-
-
