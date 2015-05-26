@@ -37,38 +37,39 @@ namespace WorkingGame
                         nextWord = GameMethods.AddWord();
                     }
                 }
+                string categoryStr;
                 int category;
                 do
                 {
-                    category = Int32.Parse(Console.ReadLine());
-                    if (category > 11 || category < 1)
+                    categoryStr = Console.ReadLine();
+                    if (!GameMethods.IsValidNum1_11(categoryStr))
                     {
-                        Console.WriteLine("Enter number from 1 to 11!!!");
+                        Console.WriteLine("Въведете число от 1 до 11:");
                     }
 
-                } while (category != 1 && category != 2 && category != 3 && category != 4 &&
-                                category != 5 && category != 6 && category != 7 && category != 8 && category != 9 && category != 10 && category != 11);
-
+                } while (!GameMethods.IsValidNum1_11(categoryStr));
+                category = int.Parse(categoryStr);
 
 
                 string theWord = GameMethods.RandomWordGen(category - 1); // random word for hangman 
                 GameMethods.GamePlay(theWord);                            // guess the word 
 
 
-                Console.WriteLine("Do you want to play again? Y/N");
+                Console.WriteLine("Нова игра? Д/Н");
                 do
                 {
                     doYouWantToPlayAgain = Console.ReadLine().ToLower();
-                    if (doYouWantToPlayAgain != "n" && doYouWantToPlayAgain != "y")
+                    if (doYouWantToPlayAgain != "н" && doYouWantToPlayAgain != "д")
                     {
-                        Console.WriteLine("Do you want to play again? Return to Main Menu: Y/N");
+                        Console.WriteLine("Нова игра? Връщане в главно меню? Д/Н");
                     }
-                } while (doYouWantToPlayAgain != "y" && doYouWantToPlayAgain != "y");
+                } while (doYouWantToPlayAgain != "н" && doYouWantToPlayAgain != "д");
 
 
-            } while (doYouWantToPlayAgain == "y");
+            } while (doYouWantToPlayAgain == "д");
 
         }
+        
     }
 }
 
