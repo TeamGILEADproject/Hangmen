@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -12,69 +13,82 @@ namespace WorkingGame
     {
         public static int StartMenu()
         {
+            Console.ResetColor();
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "БЕСЕНИЦА"));
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "created by Team GILEAD"));
-            Console.WriteLine("За игра въведете 1");
-            Console.WriteLine("За да въведете нова дума въведете 0");
-            int startInput;
+            Console.WriteLine("1. ИГРАЙ!");
+            Console.WriteLine("0. Въведете нова дума");
+            int startInput = 1;
             string strLetter;
-
-            string[] container = { "a", "b", "c", "d", "e", "f", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
-
-            strLetter = Console.ReadLine().ToLower();
-
-            if (strLetter == "0" || strLetter == "1" || strLetter == "2" || strLetter == "3" || strLetter == "4" || strLetter == "5" || strLetter == "6" || strLetter == "7"
-                || strLetter == "8" || strLetter == "9" || strLetter == "10")
-            {
-                do
-                {
-                    Console.WriteLine("Моля  изберете  опция от главното меню: 0 или 1 ако сте го направили потвърдете като повторите избора си");
-                    startInput = Int32.Parse(Console.ReadLine());
-
-
-
-
-                } while (startInput != 0 && startInput != 1);
-
-
-                return startInput;
-            }
-            else
-            {
-
-
-                for (int i = 0; i < container.Length; i++)
-                {
-                    if (strLetter == container[i] || strLetter == container[i + 1] || strLetter == container[i + 2] || strLetter == container[i + 3] || strLetter == container[i + 4]
-                        || strLetter == container[i + 5] || strLetter == container[i + 6] || strLetter == container[i + 7] || strLetter == container[i + 8]
-                        || strLetter == container[i + 9] || strLetter == container[i + 10] || strLetter == container[i + 11] || strLetter == container[i + 12]
-                        || strLetter == container[i + 13] || strLetter == container[i + 14] || strLetter == container[i + 15] || strLetter == container[i + 16]
-                        || strLetter == container[i + 17] || strLetter == container[i + 18] || strLetter == container[i + 19] || strLetter == container[i + 20]
-                        || strLetter == container[i + 21] || strLetter == container[i + 22] || strLetter == container[i + 23] || strLetter == container[i + 24])
-                    {
-
-
-
-                        char[] arrContainer = container[i].ToCharArray();
-                        while (strLetter[i] >= arrContainer[i])
-                        {
-                            Console.WriteLine("Не сте избрали опция от главното меню: 0 или 1 моля опитайте отново");
-                            strLetter = Console.ReadLine().ToLower();
-                        }
-
-
-                        break;
-                    }
-                }
-            }
 
             do
             {
-                Console.WriteLine("Моля  изберете  опция от главното меню: 0 или 1 ако сте го направили потвърдете като повторите избора си ");
-                startInput = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("Моля, въведете 0 или 1");
+                strLetter = Console.ReadLine();
+                if (IsValidNum01(strLetter))
+                {
+                    startInput = int.Parse(strLetter);
+                }
+
+            } while (!IsValidNum01(strLetter));
+
+            //string[] container = { "a", "b", "c", "d", "e", "f", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
 
 
-            } while (startInput != 0 && startInput != 1);
+            //if (strLetter == "0" || strLetter == "1" || strLetter == "2" || strLetter == "3" || strLetter == "4" || strLetter == "5" || strLetter == "6" || strLetter == "7"
+            //    || strLetter == "8" || strLetter == "9" || strLetter == "10")
+            //{
+            //    do
+            //    {
+            //        startInput = int.Parse(strLetter);
+            //        if (startInput != 0 || startInput != 1)
+            //        {
+            //            Console.WriteLine("Не сте избрали опция от главното меню: 0 или 1 моля опитайте отново");
+            //            strLetter = Console.ReadLine().ToLower();
+            //            startInput = Int32.Parse(Console.ReadLine());
+            //        }
+
+            //    } while (startInput != 0 && startInput != 1);
+
+
+            //    return startInput;
+            //}
+            //else
+            //{
+
+
+            //    for (int i = 0; i < container.Length; i++)
+            //    {
+            //        if (strLetter == container[i] || strLetter == container[i + 1] || strLetter == container[i + 2] || strLetter == container[i + 3] || strLetter == container[i + 4]
+            //            || strLetter == container[i + 5] || strLetter == container[i + 6] || strLetter == container[i + 7] || strLetter == container[i + 8]
+            //            || strLetter == container[i + 9] || strLetter == container[i + 10] || strLetter == container[i + 11] || strLetter == container[i + 12]
+            //            || strLetter == container[i + 13] || strLetter == container[i + 14] || strLetter == container[i + 15] || strLetter == container[i + 16]
+            //            || strLetter == container[i + 17] || strLetter == container[i + 18] || strLetter == container[i + 19] || strLetter == container[i + 20]
+            //            || strLetter == container[i + 21] || strLetter == container[i + 22] || strLetter == container[i + 23] || strLetter == container[i + 24])
+            //        {
+
+
+
+            //            char[] arrContainer = container[i].ToCharArray();
+            //            while (strLetter[i] >= arrContainer[i])
+            //            {
+            //                Console.WriteLine("Не сте избрали опция от главното меню: 0 или 1 моля опитайте отново");
+            //                strLetter = Console.ReadLine().ToLower();
+            //            }
+
+
+            //            break;
+            //        }
+            //    }
+            //}
+
+            //do
+            //{
+            //    Console.WriteLine("Моля  изберете  опция от главното меню: 0 или 1 ако сте го направили потвърдете като повторите избора си ");
+            //    startInput = Int32.Parse(Console.ReadLine());
+
+
+            //} while (startInput != 0 && startInput != 1);
             return startInput;
 
         }
@@ -123,7 +137,7 @@ namespace WorkingGame
             Console.WriteLine("11. Цветя");
             Console.WriteLine();
             Console.Write("Моля въдедете число от 1 до 11: ");
-            int AddToCategory = Int32.Parse(Console.ReadLine()); //category input
+            int AddToCategory = int.Parse(Console.ReadLine()); //category input
             Console.Clear();
             Console.Write("Моля, въведете думата: ");
             string text = Console.ReadLine();
@@ -395,8 +409,8 @@ namespace WorkingGame
                 Console.Clear();
                 bool guesLetter = false;
                 int howManyLettertAreGuested = 0;
-                Console.WriteLine("Въведохте буквите: {0}", String.Join(", ", enterdLetters));
                 Console.SetCursorPosition(0, 3);
+                Console.WriteLine("Въведохте буквите: {0}", String.Join(", ", enterdLetters));
                 for (int i = 0; i < theWordInArrey.Length; i++)
                 {
                     char currentEnteredChar = Convert.ToChar(letter);
@@ -457,18 +471,33 @@ namespace WorkingGame
             {
                 return false;
             }
-            
+
 
             return true;
         }
-        
+        public static bool IsValidNum01(string letter)
+        {
+            if (letter == String.Empty)
+            {
+                return false;
+            }
+            char currentChar = char.Parse(letter.ToLower());
+            if (currentChar != '0' && currentChar != '1')
+            {
+                return false;
+            }
+
+
+            return true;
+        }
+
         public static int GiveMeRandomNum(int min, int max) //return random num in range min, max
         {
             Random random = new Random();
             int myRandomNum = random.Next(min, max);
             return myRandomNum;
         }
-        
+
         public static void PlayMusic()
         {
             Console.Beep(658, 125); Console.Beep(1320, 500); Console.Beep(990, 250);
