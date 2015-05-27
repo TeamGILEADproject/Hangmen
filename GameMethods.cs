@@ -130,7 +130,7 @@ namespace WorkingGame
             }
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("Избранато от вас категория е: {0}", categories[AddToCategory]);
+            Console.WriteLine("Избраната от вас категория е: {0}", categories[AddToCategory]);
             Console.Write("Моля, въведете думата: ");
             string text = Console.ReadLine().ToLower();
             string pattern = @"\d+";
@@ -475,12 +475,14 @@ namespace WorkingGame
                 {
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.BackgroundColor = ConsoleColor.DarkRed;
+                    Console.SetCursorPosition(15, 15);
                     Console.WriteLine("Играта свърши!!! Обесени сте!!!!");
                     break;
                 }
                 if (howManyLettertAreGuested == lettersInWord)
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.SetCursorPosition(20,15);
                     Console.WriteLine("ЧЕСТИТО!!! СПЕЧЕЛИ!!!");
                     GameMethods.PlayMusic();
                     break;

@@ -58,12 +58,14 @@ namespace WorkingGame
                 GameMethods.GamePlay(theWord, category);                            // guess the word 
 
                 Console.ResetColor();
+                Console.SetCursorPosition(23, 16);
                 Console.WriteLine("Нова игра? Д/Н");
                 do
                 {
                     doYouWantToPlayAgain = Console.ReadLine().ToLower();
                     if (doYouWantToPlayAgain != "н" && doYouWantToPlayAgain != "д")
                     {
+                        Console.SetCursorPosition(12, 17);
                         Console.WriteLine("Нова игра? Връщане в главно меню? Д/Н");
                     }
                 } while (doYouWantToPlayAgain != "н" && doYouWantToPlayAgain != "д");
