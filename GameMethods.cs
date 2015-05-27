@@ -16,29 +16,30 @@ namespace WorkingGame
         public static int StartMenu()
         {
             Console.ResetColor();
-            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine();
 
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "БЕСЕНИЦА"));
-            
+
             Console.ResetColor();
 
             Console.BackgroundColor = ConsoleColor.Blue;
-            Console.ForegroundColor= ConsoleColor.DarkGray;
+            Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine();
-            
 
-            Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "created by Team GILEAD"));
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 15, 3);
+            Console.WriteLine("created by Team GILEAD");
             Console.ResetColor();
             Console.WriteLine();
 
-            Console.ForegroundColor=ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write("0. Въведете нова дума");
             Console.WriteLine();
             Console.WriteLine("1. ИГРАЙ!");
             Console.WriteLine();
-            
-            
-            
+
+
+
             int startInput = 1;
             string strLetter;
 
@@ -52,7 +53,7 @@ namespace WorkingGame
                 }
 
             } while (!IsValidNum01(strLetter));
-            
+
             return startInput;
 
         }
@@ -86,6 +87,7 @@ namespace WorkingGame
 
         public static bool AddWord()
         {
+            Console.Clear();
             bool output = false;
             string[] categories = new[]
             {
@@ -122,13 +124,13 @@ namespace WorkingGame
             int AddToCategory = int.Parse(Console.ReadLine());//category input
             while (AddToCategory < 1 || AddToCategory > 11)
             {
-                Console.ForegroundColor=ConsoleColor.DarkCyan;
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("Моля въдедете число от 1 до 11: ");
                 AddToCategory = int.Parse(Console.ReadLine());
             }
             Console.Clear();
-            Console.ForegroundColor= ConsoleColor.DarkCyan;
-            Console.WriteLine("Избранато от вас категория е: {0}",categories[AddToCategory]);
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("Избранато от вас категория е: {0}", categories[AddToCategory]);
             Console.Write("Моля, въведете думата: ");
             string text = Console.ReadLine().ToLower();
             string pattern = @"\d+";
@@ -146,14 +148,14 @@ namespace WorkingGame
 
             switch (AddToCategory)
             {
-                    
+
                 case 1: string contents = File.ReadAllText(@"Words\Countries.txt");
 
                     if (contents.Contains(text))
                     {
-                      Console.ForegroundColor= ConsoleColor.DarkRed;
-                        
-        
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+
+
                         Console.WriteLine("Тази държава вече съществува!");
                     }
                     else
@@ -341,8 +343,9 @@ namespace WorkingGame
                         }
                     } break;
 
+                default:
                     Console.ForegroundColor = ConsoleColor.Red;
-                default: Console.WriteLine("Грешен вход!"); break;
+                    Console.WriteLine("Грешен вход!"); break;
             }
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("Искате ли да въведете друга дума? Да/Не");
@@ -385,9 +388,20 @@ namespace WorkingGame
 
         }
 
-        public static void GamePlay(string theWord)
+        public static void GamePlay(string theWord, int category)
         {
             Console.Clear();
+            string[] cetegoryStrMass =       {  "Държави",
+                                                "Градове в България",
+                                                "Реки в България",
+                                                "Планини",
+                                                "Животни",
+                                                "Растения",
+                                                "Автомобили (марки/модели)",
+                                                "Лектори в СофтУни",
+                                                "Острови",
+                                                "Планети",
+                                                "Цветя"        };
             char[] theWordInArrey = theWord.ToCharArray();
             char[] hidenWordArrey = new char[theWordInArrey.Length];
             int lettersInWord = 0;
@@ -430,9 +444,11 @@ namespace WorkingGame
                 Console.Clear();
                 bool guesLetter = false;
                 int howManyLettertAreGuested = 0;
-                Console.SetCursorPosition(0, 3);
+                Console.SetCursorPosition(0, 1);
+                Console.WriteLine("Категория: {0}", cetegoryStrMass[category - 1]);
+                Console.SetCursorPosition(0, 2);
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
-                Console.WriteLine("Въведохте буквите: {0}", String.Join(", ", enterdLetters));
+                Console.WriteLine("Въведохте буквите: \n\r{0}", String.Join(", ", enterdLetters));
                 for (int i = 0; i < theWordInArrey.Length; i++)
                 {
                     char currentEnteredChar = Convert.ToChar(letter);
@@ -457,18 +473,19 @@ namespace WorkingGame
                 GameMethods.DrawingGallowAndHangman(counterForErrors);
                 if (counterForErrors == 9)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Играта свърши!!!");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.BackgroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Играта свърши!!! Обесени сте!!!!");
                     break;
                 }
                 if (howManyLettertAreGuested == lettersInWord)
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine("ЧЕСТИТО!!! СПЕЧЕЛИХТЕ!!!");
+                    Console.WriteLine("ЧЕСТИТО!!! СПЕЧЕЛИ!!!");
                     GameMethods.PlayMusic();
                     break;
                 }
-                Console.SetCursorPosition(0, 7);
+                Console.SetCursorPosition(0, 8);
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.Write("Въведете буква: ");
                 letter = Console.ReadLine();
@@ -509,8 +526,7 @@ namespace WorkingGame
             {
                 return false;
             }
-            char currentChar = char.Parse(letter.ToLower());
-            if (currentChar != '0' && currentChar != '1')
+            if (letter != "0" && letter != "1")
             {
                 return false;
             }
