@@ -18,7 +18,7 @@ namespace WorkingGame
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
             Console.InputEncoding = Encoding.Unicode;
             Console.OutputEncoding = Encoding.Unicode;
-            string doYouWantToPlayAgain;
+            string doYouWantToPlayAgain="д";
 
             do
             {
@@ -36,17 +36,18 @@ namespace WorkingGame
                     {
                         nextWord = GameMethods.AddWord();
                     }
+                     continue;
                 }
                 string categoryStr;
                 int category;
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                Console.Write("Въведете число от 1 до 11: ");
                 do
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkCyan;
-                    Console.Write("Въведете число от 1 до 11: ");
                     categoryStr = Console.ReadLine();
                     if (!GameMethods.IsValidNum1_11(categoryStr))
                     {
-                        //Console.Write("Въведете число от 1 до 11: ");
+                        Console.Write("Въведете число от 1 до 11: ");
                     }
 
                 } while (!GameMethods.IsValidNum1_11(categoryStr));
@@ -54,7 +55,7 @@ namespace WorkingGame
 
 
                 string theWord = GameMethods.RandomWordGen(category - 1); // random word for hangman 
-                GameMethods.GamePlay(theWord);                            // guess the word 
+                GameMethods.GamePlay(theWord, category);                            // guess the word 
 
                 Console.ResetColor();
                 Console.WriteLine("Нова игра? Д/Н");
