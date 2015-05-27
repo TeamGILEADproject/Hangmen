@@ -149,13 +149,13 @@ namespace DrawingGallowsAndHangman
                 // draw message
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.SetCursorPosition(77, 7);
-                Console.WriteLine("Please,");
+                Console.WriteLine("Моля,");
                 Console.SetCursorPosition(77, 8);
-                Console.WriteLine("don`t make");
+                Console.WriteLine("не правете");
                 Console.SetCursorPosition(77, 9);
-                Console.WriteLine("mistake");
+                Console.WriteLine("повече");
                 Console.SetCursorPosition(77, 10);
-                Console.WriteLine("again!!!");
+                Console.WriteLine("грешки!!!");
 
             }
 
