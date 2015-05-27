@@ -26,50 +26,73 @@ namespace AddWords
                 case 1: string contents = File.ReadAllText(@"C:\Users\Alexandra Ruseva\Desktop\Words\Countries.txt");
                     if (contents.Contains(text))
                     {
-                        Console.WriteLine("Duplicate found!");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Вече съществува такава дума !");
+                        Console.ResetColor();
                     }
-                    else { 
-                    
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Alexandra Ruseva\Desktop\Words\Countries.txt", true))
+                    else
                     {
-                        file.WriteLine(text);
-                    }}; break;
 
-                case 2:  contents = File.ReadAllText(@"C:\Users\Alexandra Ruseva\Desktop\Words\City.txt");
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Alexandra Ruseva\Desktop\Words\Countries.txt", true))
+                        {
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            file.WriteLine(text);
+                            Console.ResetColor();
+                        }
+                    }; break;
+
+                case 2: contents = File.ReadAllText(@"C:\Users\Alexandra Ruseva\Desktop\Words\City.txt");
                     if (contents.Contains(text))
                     {
-                        Console.WriteLine("Duplicate found!");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Вече съществува такава дума !");
+                        Console.ResetColor();
                     }
-                    else { 
-                    
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Alexandra Ruseva\Desktop\Words\City.txt", true))
+                    else
                     {
-                        file.WriteLine(text);
-                    }}; break;
+
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Alexandra Ruseva\Desktop\Words\City.txt", true))
+                        {
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            file.WriteLine(text);
+                            Console.ResetColor();
+                        }
+                    }; break;
 
                 case 3: contents = File.ReadAllText(@"C:\Users\Alexandra Ruseva\Desktop\Words\Rivers.txt");
                     if (contents.Contains(text))
                     {
-                        Console.WriteLine("Duplicate found!");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Вече съществува такава дума !");
+                        Console.ResetColor();
                     }
-                    else { 
-                    
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Alexandra Ruseva\Desktop\Words\Rivers.txt", true))
+                    else
                     {
-                        file.WriteLine(text);
-                    }}; break;
 
-                case 4:  contents = File.ReadAllText(@"C:\Users\Alexandra Ruseva\Desktop\Words\Mountains.txt");
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Alexandra Ruseva\Desktop\Words\Rivers.txt", true))
+                        {
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            file.WriteLine(text);
+                            Console.ResetColor();
+                        }
+                    }; break;
+
+                case 4: contents = File.ReadAllText(@"C:\Users\Alexandra Ruseva\Desktop\Words\Mountains.txt");
                     if (contents.Contains(text))
                     {
-                        Console.WriteLine("Duplicate found!");
+
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Вече съществува такава дума !");
+                        Console.ResetColor();
                     }
                     else
                     {
 
                         using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Alexandra Ruseva\Desktop\Words\Mountains.txt", true))
                         {
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             file.WriteLine(text);
+                            Console.ResetColor();
                         }
                     }; break;
 
@@ -77,57 +100,73 @@ namespace AddWords
                 case 5: contents = File.ReadAllText(@"C:\Users\Alexandra Ruseva\Desktop\Words\Animals.txt");
                     if (contents.Contains(text))
                     {
-                        Console.WriteLine("Duplicate found!");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Вече съществува такава дума !");
+                        Console.ResetColor();
                     }
                     else
                     {
 
                         using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Alexandra Ruseva\Desktop\Words\Animals.txt", true))
                         {
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             file.WriteLine(text);
+                            Console.ResetColor();
                         }
                     }; break;
 
 
-                case 6:  contents = File.ReadAllText(@"C:\Users\Alexandra Ruseva\Desktop\Words\Plants.txt");
+                case 6: contents = File.ReadAllText(@"C:\Users\Alexandra Ruseva\Desktop\Words\Plants.txt");
                     if (contents.Contains(text))
                     {
-                        Console.WriteLine("Duplicate found!");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Вече съществува такава дума !");
+                        Console.ResetColor();
                     }
                     else
                     {
 
                         using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Alexandra Ruseva\Desktop\Words\Plants.txt", true))
                         {
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             file.WriteLine(text);
+                            Console.ResetColor();
                         }
                     }; break;
 
-                case 7:  contents = File.ReadAllText(@"C:\Users\Alexandra Ruseva\Desktop\Words\Cars.txt");
+                case 7: contents = File.ReadAllText(@"C:\Users\Alexandra Ruseva\Desktop\Words\Cars.txt");
                     if (contents.Contains(text))
                     {
-                        Console.WriteLine("Duplicate found!");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Вече съществува такава дума !");
+                        Console.ResetColor();
                     }
                     else
                     {
 
                         using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Alexandra Ruseva\Desktop\Words\Cars.txt", true))
                         {
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             file.WriteLine(text);
+                            Console.ResetColor(); 
                         }
                     }; break;
 
                 case 8: contents = File.ReadAllText(@"C:\Users\Alexandra Ruseva\Desktop\Words\Lectors.txt");
                     if (contents.Contains(text))
                     {
-                        Console.WriteLine("Duplicate found!");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Вече съществува такава дума !");
+                        Console.ResetColor();
                     }
                     else
                     {
 
                         using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Alexandra Ruseva\Desktop\Words\Lectors.txt", true))
                         {
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             file.WriteLine(text);
+                            Console.ResetColor(); 
                         }
                     }; break;
 
