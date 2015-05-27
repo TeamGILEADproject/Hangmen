@@ -12,9 +12,15 @@ namespace WorkingGame
 {
     public class WorkingGame
     {
+            
         static void Main()
         {
-
+            Console.WindowHeight = 30;
+            Console.WindowWidth = 90;
+            Console.BufferHeight = 30;
+            Console.BufferWidth = 90;
+            
+            
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
             Console.InputEncoding = Encoding.Unicode;
             Console.OutputEncoding = Encoding.Unicode;
