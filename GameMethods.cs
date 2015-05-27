@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -14,10 +16,28 @@ namespace WorkingGame
         public static int StartMenu()
         {
             Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "БЕСЕНИЦА"));
+            
+            Console.ResetColor();
+
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor= ConsoleColor.DarkGray;
+            Console.WriteLine();
+            
+
             Console.WriteLine(String.Format("{0," + Console.WindowWidth / 2 + "}", "created by Team GILEAD"));
-            Console.WriteLine("0. Въведете нова дума");
+            Console.ResetColor();
+            Console.WriteLine();
+
+            Console.ForegroundColor=ConsoleColor.DarkBlue;
+            Console.Write("0. Въведете нова дума");
+            Console.WriteLine();
             Console.WriteLine("1. ИГРАЙ!");
+            Console.WriteLine();
+            
+            
             
             int startInput = 1;
             string strLetter;
@@ -83,6 +103,7 @@ namespace WorkingGame
                 "Цветя"
 
             };
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("Изберете категория в която да добавите дума : ");
             Console.WriteLine("1. Държави");
             Console.WriteLine("2. Градове в България");
@@ -97,13 +118,16 @@ namespace WorkingGame
             Console.WriteLine("11. Цветя");
             Console.WriteLine();
             Console.Write("Моля въдедете число от 1 до 11: ");
+
             int AddToCategory = int.Parse(Console.ReadLine());//category input
             while (AddToCategory < 1 || AddToCategory > 11)
             {
+                Console.ForegroundColor=ConsoleColor.DarkCyan;
                 Console.WriteLine("Моля въдедете число от 1 до 11: ");
                 AddToCategory = int.Parse(Console.ReadLine());
             }
             Console.Clear();
+            Console.ForegroundColor= ConsoleColor.DarkCyan;
             Console.WriteLine("Избранато от вас категория е: {0}",categories[AddToCategory]);
             Console.Write("Моля, въведете думата: ");
             string text = Console.ReadLine();
@@ -113,6 +137,7 @@ namespace WorkingGame
             bool wordConsistDigit = matches.IsMatch(text, 0);
             if (wordConsistDigit)
             {
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("Думата не може да съдържа цифри :)");
                 Console.Write("Моля, въведи нова дума: ");
                 text = Console.ReadLine();
@@ -121,10 +146,14 @@ namespace WorkingGame
 
             switch (AddToCategory)
             {
+                    
                 case 1: string contents = File.ReadAllText(@"Words\Countries.txt");
 
                     if (contents.Contains(text))
                     {
+                      Console.ForegroundColor= ConsoleColor.DarkRed;
+                        
+        
                         Console.WriteLine("Тази държава вече съществува!");
                     }
                     else
@@ -132,6 +161,7 @@ namespace WorkingGame
                         using (StreamWriter file = new StreamWriter(@"Words\Countries.txt", true))
                         {
                             file.WriteLine(text);
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             Console.WriteLine("Думата беше въведена. Благодарим ти!");
                             file.Close();
                         }
@@ -140,6 +170,7 @@ namespace WorkingGame
                 case 2: contents = File.ReadAllText(@"Words\City.txt");
                     if (contents.Contains(text))
                     {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.WriteLine("Този град вече съществува!");
                     }
                     else
@@ -147,6 +178,7 @@ namespace WorkingGame
                         using (StreamWriter file = new StreamWriter(@"Words\City.txt", true))
                         {
                             file.WriteLine(text);
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             Console.WriteLine("Думата беше въведена. Благодарим ти!");
                             file.Close();
                         }
@@ -155,6 +187,7 @@ namespace WorkingGame
                 case 3: contents = File.ReadAllText(@"Words\Rivers.txt");
                     if (contents.Contains(text))
                     {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.WriteLine("Тази река вече съществува!");
                     }
                     else
@@ -162,6 +195,7 @@ namespace WorkingGame
                         using (StreamWriter file = new StreamWriter(@"Words\Rivers.txt", true))
                         {
                             file.WriteLine(text);
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             Console.WriteLine("Думата беше въведена. Благодарим ти!");
                             file.Close();
                         }
@@ -170,6 +204,7 @@ namespace WorkingGame
                 case 4: contents = File.ReadAllText(@"Words\Mountains.txt");
                     if (contents.Contains(text))
                     {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.WriteLine("Тази планина вече съществува!");
                     }
                     else
@@ -178,6 +213,7 @@ namespace WorkingGame
                         using (StreamWriter file = new StreamWriter(@"Words\Mountains.txt", true))
                         {
                             file.WriteLine(text);
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             Console.WriteLine("Думата беше въведена. Благодарим ти!");
                             file.Close();
                         }
@@ -187,6 +223,7 @@ namespace WorkingGame
                 case 5: contents = File.ReadAllText(@"Words\Animals.txt");
                     if (contents.Contains(text))
                     {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.WriteLine("Това животно вече съществува!");
                     }
                     else
@@ -195,6 +232,7 @@ namespace WorkingGame
                         using (StreamWriter file = new StreamWriter(@"Words\Animals.txt", true))
                         {
                             file.WriteLine(text);
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             Console.WriteLine("Думата беше въведена. Благодарим ти!");
                             file.Close();
                         }
@@ -204,6 +242,7 @@ namespace WorkingGame
                 case 6: contents = File.ReadAllText(@"Words\Plants.txt");
                     if (contents.Contains(text))
                     {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.WriteLine("Това растение вече съществува!");
                     }
                     else
@@ -212,6 +251,7 @@ namespace WorkingGame
                         using (StreamWriter file = new StreamWriter(@"Words\Plants.txt", true))
                         {
                             file.WriteLine(text);
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             Console.WriteLine("Думата беше въведена. Благодарим ти!");
                             file.Close();
                         }
@@ -220,6 +260,7 @@ namespace WorkingGame
                 case 7: contents = File.ReadAllText(@"Words\Cars.txt");
                     if (contents.Contains(text))
                     {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.WriteLine("Тази кола вече съществува!");
                     }
                     else
@@ -227,6 +268,7 @@ namespace WorkingGame
                         using (StreamWriter file = new StreamWriter(@"Words\Cars.txt", true))
                         {
                             file.WriteLine(text);
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             Console.WriteLine("Думата беше въведена. Благодарим ти!");
                             file.Close();
                         }
@@ -235,6 +277,7 @@ namespace WorkingGame
                 case 8: contents = File.ReadAllText(@"Words\Lectors.txt");
                     if (contents.Contains(text))
                     {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.WriteLine("Този лектор вече съществува");
                     }
                     else
@@ -242,6 +285,7 @@ namespace WorkingGame
                         using (StreamWriter file = new StreamWriter(@" Words\Lectors.txt", true))
                         {
                             file.WriteLine(text);
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             Console.WriteLine("Думата беше въведена. Благодарим ти!");
                             file.Close();
                         }
@@ -250,6 +294,7 @@ namespace WorkingGame
                 case 9: contents = File.ReadAllText(@"Words\islands.txt");
                     if (contents.Contains(text))
                     {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.WriteLine("Този остров вече съществува!");
                     }
                     else
@@ -257,6 +302,7 @@ namespace WorkingGame
                         using (StreamWriter file = new StreamWriter(@"Words\islands.txt", true))
                         {
                             file.WriteLine(text);
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             Console.WriteLine("Думата беше въведена. Благодарим ти!");
                             file.Close();
                         }
@@ -264,6 +310,7 @@ namespace WorkingGame
                 case 10: contents = File.ReadAllText(@"Words\planets.txt");
                     if (contents.Contains(text))
                     {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.WriteLine("Тази планета вече съществува!");
                     }
                     else
@@ -271,6 +318,7 @@ namespace WorkingGame
                         using (StreamWriter file = new StreamWriter(@"Words\planets.txt", true))
                         {
                             file.WriteLine(text);
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             Console.WriteLine("Думата беше въведена. Благодарим ти!");
                             file.Close();
                         }
@@ -279,6 +327,7 @@ namespace WorkingGame
                 case 11: contents = File.ReadAllText(@"Words\flowers.txt");
                     if (contents.Contains(text))
                     {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.WriteLine("Това цвете вече съществува!");
                     }
                     else
@@ -286,13 +335,16 @@ namespace WorkingGame
                         using (StreamWriter file = new StreamWriter(@"Words\flowers.txt", true))
                         {
                             file.WriteLine(text);
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             Console.WriteLine("Думата беше въведена. Благодарим ти!");
                             file.Close();
                         }
                     } break;
 
-                default: Console.WriteLine("Wrong Input!"); break;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                default: Console.WriteLine("Грешен вход!"); break;
             }
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("Искате ли да въведете друга дума? Да/Не");
             string yN = Console.ReadLine().ToLower();
             if (yN == "да")
@@ -351,6 +403,7 @@ namespace WorkingGame
                     hidenWordArrey[i] = ' ';
                 }
             }
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine(String.Join(" ", hidenWordArrey));
             Console.Write("Въведете буква: ");
             List<string> enterdLetters = new List<string>();
@@ -358,12 +411,14 @@ namespace WorkingGame
             //added validation for input letter
             while (letter.Length > 1 || letter == " " || letter == String.Empty)
             {
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("Моля, въведете само една буква :)");
                 Console.Write("Въведете буква: ");
                 letter = Console.ReadLine();
             }
             while (!GameMethods.IsValidLetter(letter))
             {
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("Моля, въведете буква от А до Я.");
                 Console.Write("Въведете буква: ");
                 letter = Console.ReadLine();
@@ -376,6 +431,7 @@ namespace WorkingGame
                 bool guesLetter = false;
                 int howManyLettertAreGuested = 0;
                 Console.SetCursorPosition(0, 3);
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("Въведохте буквите: {0}", String.Join(", ", enterdLetters));
                 for (int i = 0; i < theWordInArrey.Length; i++)
                 {
@@ -394,33 +450,39 @@ namespace WorkingGame
                 {
                     counterForErrors++;
                 }
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("Остават Ви {0} грешни опита! \n\r", 9 - counterForErrors);
                 Console.WriteLine(String.Join(" ", hidenWordArrey));
                 Console.WriteLine();
                 GameMethods.DrawingGallowAndHangman(counterForErrors);
                 if (counterForErrors == 9)
                 {
-                    Console.WriteLine("GAME OVER!!!");
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Играта свърши!!!");
                     break;
                 }
                 if (howManyLettertAreGuested == lettersInWord)
                 {
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine("ЧЕСТИТО!!! СПЕЧЕЛИХТЕ!!!");
                     GameMethods.PlayMusic();
                     break;
                 }
                 Console.SetCursorPosition(0, 7);
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.Write("Въведете буква: ");
                 letter = Console.ReadLine();
                 //added validation for input letter
                 while (letter.Length > 1 || letter == " " || letter == String.Empty)
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
                     Console.WriteLine("Моля, въведете само една буква :)");
                     Console.Write("Въведете буква: ");
                     letter = Console.ReadLine();
                 }
                 while (!GameMethods.IsValidLetter(letter))
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
                     Console.WriteLine("Моля, въведете буква от А до Я.");
                     Console.Write("Въведете буква: ");
                     letter = Console.ReadLine();
@@ -605,13 +667,13 @@ namespace WorkingGame
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.SetCursorPosition(77, 7);
-            Console.WriteLine("Please,");
+            Console.WriteLine("Моля,");
             Console.SetCursorPosition(77, 8);
-            Console.WriteLine("don`t make");
+            Console.WriteLine("не правете");
             Console.SetCursorPosition(77, 9);
-            Console.WriteLine("mistake");
+            Console.WriteLine("повече");
             Console.SetCursorPosition(77, 10);
-            Console.WriteLine("again!!!");
+            Console.WriteLine("грешки!!!");
             Console.ResetColor();
         }
 
