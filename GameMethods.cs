@@ -44,7 +44,7 @@ namespace WorkingGame
 
             do
             {
-                Console.WriteLine("Моля, въведете 0 или 1");
+                Console.Write("Моля, въведете 0 или 1: ");
                 strLetter = Console.ReadLine();
                 if (IsValidNum01(strLetter))
                 {
@@ -114,7 +114,7 @@ namespace WorkingGame
             Console.WriteLine("7. Автомобили (марки/модели)");
             Console.WriteLine("8. Лектори в СофтУни");
             Console.WriteLine("9. Острови");
-            Console.WriteLine("10. Планети в слънчевата система");
+            Console.WriteLine("10. Планети");
             Console.WriteLine("11. Цветя");
             Console.WriteLine();
             Console.Write("Моля въдедете число от 1 до 11: ");
@@ -130,7 +130,7 @@ namespace WorkingGame
             Console.ForegroundColor= ConsoleColor.DarkCyan;
             Console.WriteLine("Избранато от вас категория е: {0}",categories[AddToCategory]);
             Console.Write("Моля, въведете думата: ");
-            string text = Console.ReadLine();
+            string text = Console.ReadLine().ToLower();
             string pattern = @"\d+";
             //validating words
             Regex matches = new Regex(pattern);
@@ -140,7 +140,7 @@ namespace WorkingGame
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("Думата не може да съдържа цифри :)");
                 Console.Write("Моля, въведи нова дума: ");
-                text = Console.ReadLine();
+                text = Console.ReadLine().ToLower();
 
             }
 
@@ -385,10 +385,10 @@ namespace WorkingGame
 
         }
 
-        public static void GamePlay(string theWotd)
+        public static void GamePlay(string theWord)
         {
             Console.Clear();
-            char[] theWordInArrey = theWotd.ToCharArray();
+            char[] theWordInArrey = theWord.ToCharArray();
             char[] hidenWordArrey = new char[theWordInArrey.Length];
             int lettersInWord = 0;
             for (int i = 0; i < theWordInArrey.Length; i++)

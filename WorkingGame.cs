@@ -41,10 +41,12 @@ namespace WorkingGame
                 int category;
                 do
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                    Console.Write("Въведете число от 1 до 11: ");
                     categoryStr = Console.ReadLine();
                     if (!GameMethods.IsValidNum1_11(categoryStr))
                     {
-                        Console.WriteLine("Въведете число от 1 до 11:");
+                        //Console.Write("Въведете число от 1 до 11: ");
                     }
 
                 } while (!GameMethods.IsValidNum1_11(categoryStr));
@@ -54,7 +56,7 @@ namespace WorkingGame
                 string theWord = GameMethods.RandomWordGen(category - 1); // random word for hangman 
                 GameMethods.GamePlay(theWord);                            // guess the word 
 
-
+                Console.ResetColor();
                 Console.WriteLine("Нова игра? Д/Н");
                 do
                 {
